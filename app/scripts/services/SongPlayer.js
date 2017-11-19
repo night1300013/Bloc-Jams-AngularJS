@@ -35,6 +35,10 @@
               $rootScope.$apply(function(){
                   SongPlayer.currentTime = currentBuzzObject.getTime();
               });
+          }).bind('volumechange', function() {
+              $rootScope.$apply(function(){
+                  SongPlayer.volume = currentBuzzObject.getVolume();
+              });
           });
 
           SongPlayer.currentSong = song;
@@ -75,6 +79,11 @@
       * type: {Number}
       **/
       SongPlayer.currentTime = null;
+      /**
+      * desc: Current volume, default is 50
+      * type: {Number}
+      **/
+      SongPlayer.volume = 50;
       /**
       * function: play
       * desc: Starts or restarts song if it's not currently playing
@@ -141,6 +150,16 @@
       SongPlayer.setCurrentTime = function(time) {
           if (currentBuzzObject) {
               currentBuzzObject.setTime(time);
+          }
+      }
+      /**
+      * function: setVolume
+      * desc: Set volume
+      * param: {Number} volume
+      **/
+      SongPlayer.setVolume = function(volume) {
+          if (currentBuzzObject) {
+              currentBuzzObject.setVolume(volume);
           }
       }
 

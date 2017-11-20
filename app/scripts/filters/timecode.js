@@ -1,5 +1,5 @@
 (function(){
-    function timecode() {
+    function timecode(SongPlayer) {
         return function(seconds) {
             var seconds = Number.parseFloat(seconds);
 
@@ -7,7 +7,7 @@
               return "-:--";
             }
 
-            var wholeSeconds = Math.floor(seconds);
+/*            var wholeSeconds = Math.floor(seconds);
             var mintues = Math.floor(wholeSeconds / 60);
             var remainingSeconds = wholeSeconds % 60;
 
@@ -18,6 +18,8 @@
             }
 
             output += remainingSeconds;
+*/
+            output = SongPlayer.getTimer(seconds);
 
             return output;
         };
@@ -25,5 +27,5 @@
 
     angular
         .module('blocJams')
-        .filter('timecode', timecode)
+        .filter('timecode', ['SongPlayer', timecode]);
 })();

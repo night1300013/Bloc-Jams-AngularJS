@@ -162,6 +162,15 @@
               currentBuzzObject.setVolume(volume);
           }
       }
+      /**
+      * function: formatTimer
+      * desc: format seconds into a easy read timer
+      * param: {Number} seconds
+      **/
+      SongPlayer.getTimer = function(seconds) {
+              var time = buzz.toTimer(seconds);
+              return time;
+      }
 
       return SongPlayer;
     }
